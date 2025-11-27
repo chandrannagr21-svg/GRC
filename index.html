@@ -33,3 +33,143 @@
   </header>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino Buzzer Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #111;
+    }
+    header {
+      background-color: #0b76ef;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #0b76ef;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code { font-family: "Courier New", Courier, monospace; }
+    p { line-height: 1.6; }
+    ul { margin-left: 20px; }
+    footer { text-align: center; color: #555; margin-top: 20px; font-size: 14px; }
+    .highlight { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>My Arduino Buzzer Project</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Project Overview</h2>
+    <p>
+      In this project, I created and ran a simple program on an Arduino to control a buzzer. 
+      My goal was to understand how to use digital pins to trigger an active or passive buzzer and 
+      verify the result using the Arduino IDE Serial Monitor. This experience taught me about 
+      Arduino coding, wiring, and observing hardware responses.
+    </p>
+  </section>
+
+  <section>
+    <h2>My Experience</h2>
+    <p>
+      While creating this project, I learned to:
+    </p>
+    <ul>
+      <li>Write Arduino code to control a buzzer using <code>digitalWrite()</code> or <code>tone()</code>.</li>
+      <li>Wire the buzzer correctly to the Arduino pins and ground.</li>
+      <li>Use the Serial Monitor to print and verify buzzer activity.</li>
+      <li>Troubleshoot common errors like no sound or wrong pin configuration.</li>
+    </ul>
+    <p>
+      Overall, it was a hands-on experience that helped me connect programming logic with physical output.
+    </p>
+  </section>
+
+  <section>
+    <h2>Arduino Buzzer Code</h2>
+    <p>Here is the code I used to execute the buzzer:</p>
+    <pre><code>#include &lt;Arduino.h&gt;
+
+const int buzzerPin = 8;   // Buzzer connected to pin 8
+const int buttonPin = 2;   // Optional: Button to trigger buzzer
+
+void setup() {
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP); // Button to GND
+  Serial.begin(9600);
+  Serial.println("Arduino Buzzer Program Ready");
+}
+
+void loop() {
+  if (digitalRead(buttonPin) == LOW) {
+    digitalWrite(buzzerPin, HIGH); // Buzzer ON
+    Serial.println("BUZZER: ON");
+    delay(500);                    // Wait 500ms
+    digitalWrite(buzzerPin, LOW);  // Buzzer OFF
+    Serial.println("BUZZER: OFF");
+    delay(250);                    // Small delay to debounce button
+  }
+}
+</code></pre>
+  </section>
+
+  <section>
+    <h2>How I Ran the Program</h2>
+    <ol>
+      <li>Opened the Arduino IDE and copied my code into a new sketch.</li>
+      <li>Connected the Arduino board to my PC using a USB cable.</li>
+      <li>Set the correct board type and COM port in the IDE.</li>
+      <li>Uploaded the sketch to the Arduino.</li>
+      <li>Opened the Serial Monitor at 9600 baud to see messages like <span class="highlight">"BUZZER: ON"</span> and <span class="highlight">"BUZZER: OFF"</span>.</li>
+      <li>Pressed the button to trigger the buzzer and verified it made sound.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Results & Observations</h2>
+    <p>
+      After running the program:
+    </p>
+    <ul>
+      <li>The buzzer correctly sounded when the button was pressed.</li>
+      <li>Serial Monitor messages synchronized perfectly with buzzer ON/OFF states.</li>
+      <li>This helped me confirm that the code logic and wiring were correct.</li>
+    </ul>
+    <p>
+      This small project demonstrated the connection between code, hardware, and monitoring outputs effectively.
+    </p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 My Arduino Projects. All Rights Reserved.
+</footer>
+
+</body>
+</html>
